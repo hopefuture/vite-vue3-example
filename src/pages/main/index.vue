@@ -8,10 +8,16 @@ import HelloWorld from '@/components/HelloWorld.vue'
   <div class="app">
     <img alt="Vue logo" src="@/assets/logo.png" />
     <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+
+    <div class="router-panel">
+      <router-link to="/">Go to Home</router-link>
+      <router-link to="/about">Go to About</router-link>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -19,5 +25,14 @@ import HelloWorld from '@/components/HelloWorld.vue'
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+  }
+
+  .router-panel {
+    display: flex;
+    justify-content: center;
+
+    a {
+      padding: 20px;
+    }
   }
 </style>
