@@ -1,5 +1,9 @@
 # 搭建过程
 
+## 搭建说明
+
+部分设置参考了 vue3 cli 生成的模板
+
 ## 基于 [vite](https://cn.vitejs.dev/) 官方说明
 
 ```shell
@@ -140,6 +144,12 @@ app.mount('#app')
             └── home
                 └── index.vue
 
+## vuex
+
+```shell
+npm install vuex@next
+```
+
 ## sass
 
 ```shell
@@ -147,3 +157,64 @@ npm install --save-dev sass
 ```
 
 ## eslint
+
+参考 vue3-cli 生成的默认设置
+
+需要安装以下依赖
+
+```shell
+npm install --save-dev eslint eslint-plugin-vue vue-eslint-parser @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-standard
+```
+
+由于 eslint-config-standard 依赖 eslint-plugin-import eslint-plugin-node 和 eslint-plugin-promise，所以还需安装这三个包
+
+```shell
+npm install --save-dev eslint-plugin-import eslint-plugin-node eslint-plugin-promise
+```
+
+.eslintrc.js
+
+* eslint-plugin-vue 设置
+
+  ```js
+  {
+    "extends": ["plugin:vue/vue3-essential"]
+  }
+  ```
+
+* eslint-config-standard 设置
+
+  ```js
+  {
+    "extends": ["standard"]
+  }
+  ```
+
+* @typescript-eslint/eslint-plugin 和 @typescript-eslint/parser
+
+  ```js
+  {
+    "extends": ["plugin:@typescript-eslint/eslint-recommended"]
+  },
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2020,
+    extraFileExtensions: ['.vue'],
+    ecmaFeatures: {
+      jsx: true
+    },
+    sourceType: 'module'
+  },
+  ```
+
+如果想看最终eslint config生成，可以debug查看，对应的文件为：
+
+node_modules/eslint/lib/linter/linter.js 方法 verify
+
+## axios
+
+## mock
+
+## 单元测试
+
+## ssr

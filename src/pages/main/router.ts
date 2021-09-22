@@ -8,7 +8,7 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: () => import('@/pages/main/views/home/index.vue')
   },
-  { path: '/about', component: About },
+  { path: '/about', component: About }
 ]
 
 const router = createRouter({
@@ -17,4 +17,3 @@ const router = createRouter({
 })
 
 export default router
-
