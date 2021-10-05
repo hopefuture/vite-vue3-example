@@ -1,16 +1,22 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-const Home = { template: '<div>Home</div>' }
-const About = { template: '<div>About</div>' }
-
+// 动态引入
 const routes: RouteRecordRaw[] = [
-  { path: '/', component: Home },
-  { path: '/about', component: About }
-  // 动态引入
-  // {
-  //   path: '/',
-  //   component: () => import("../views/home/index.vue")
-  // },
+  {
+    name: 'home',
+    path: '/',
+    component: () => import('@/pages/examples/views/home/index.vue')
+  },
+  {
+    name: 'element',
+    path: '/element',
+    component: () => import('@/pages/examples/views/element/index.vue')
+  },
+  {
+    name: 'about',
+    path: '/about',
+    component: () => import('@/pages/examples/views/about/index.vue')
+  }
 ]
 
 const router = createRouter({

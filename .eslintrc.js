@@ -27,6 +27,12 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['*.vue'],
+      rules: {
+        indent: 'off'
+      }
+    },
+    {
       files: ['*.ts', '*.tsx'],
       rules: {
         // The core 'no-unused-vars' rules (in the eslint:recommeded ruleset)

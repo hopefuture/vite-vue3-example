@@ -229,7 +229,54 @@ export default {
 
 ## element plus 组件
 
+```shell
+npm install element-plus --save
+```
 
+### 自动导入
+
+First you need install unplugin-vue-components.
+
+```shell
+npm install unplugin-vue-components
+```
+
+vite.config.ts 设置
+
+```shell
+// vite.config.ts
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
+export default {
+  plugins: [
+    // ...
+    Components({
+      resolvers: [ElementPlusResolver({
+          importStyle: 'sass'
+        })],
+    }),
+  ],
+}
+```
+
+### 手动导入
+
+手动导入需要安装插件 unplugin-element-plus
+
+```shell
+npm install --save-dev unplugin-element-plus
+```
+
+vite.config.ts 设置
+
+```shell
+import ElementPlus from 'unplugin-element-plus/vite'
+
+export default {
+  plugins: [ElementPlus()],
+}
+```
 
 ## axios
 

@@ -1,40 +1,34 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+  import '@/components/layouts/BaseHeader.vue'
 </script>
 
 <template>
-  <div class="app">
-    <h1>vue3 示例</h1>
-    <div class="router-panel">
-      <!--使用 router-link 组件进行导航 -->
-      <!--通过传递 `to` 来指定链接 -->
-      <!--`<router-link>` 将呈现一个带有正确 `href` 属性的 `<a>` 标签-->
-      <router-link to="/">Go to Home</router-link>
-      <router-link to="/about">Go to About</router-link>
-    </div>
-    <!-- 路由出口 -->
-    <!-- 路由匹配到的组件将渲染在这里 -->
+  <BaseHeader />
+  <div class="router-panel">
+    <!--使用 router-link 组件进行导航 -->
+    <!--通过传递 `to` 来指定链接 -->
+    <!--`<router-link>` 将呈现一个带有正确 `href` 属性的 `<a>` 标签-->
+    <router-link to="/">首页</router-link>
+    <router-link to="/element">Element Plus</router-link>
+    <router-link to="/about">Go to About</router-link>
+  </div>
+  <!-- 路由出口 -->
+  <!-- 路由匹配到的组件将渲染在这里 -->
+  <div class="panel-content">
     <router-view></router-view>
   </div>
 </template>
 
 <style lang="scss">
-  .app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
-
   .router-panel {
     display: flex;
-    justify-content: center;
 
     a {
       padding: 20px;
     }
+  }
+
+  .panel-content {
+    padding: 16px;
   }
 </style>
