@@ -1,6 +1,7 @@
-import { resolve } from 'path';
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +15,7 @@ export default defineConfig({
   server: {
     host: '127.0.0.1',
     port: 8090,
-    strictPort: true, // 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。
+    strictPort: true // 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。
   },
   build: {
     rollupOptions: {
@@ -24,5 +25,5 @@ export default defineConfig({
       }
     }
   },
-  plugins: [vue()],
+  plugins: [vue(), vueJsx()]
 })

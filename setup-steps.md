@@ -2,7 +2,7 @@
 
 ## 搭建说明
 
-部分设置参考了 vue3 cli 生成的模板
+部分设置参考了 vue3 cli 生成的模板，包含 eslint
 
 ## 基于 [vite](https://cn.vitejs.dev/) 官方说明
 
@@ -210,6 +210,26 @@ npm install --save-dev eslint-plugin-import eslint-plugin-node eslint-plugin-pro
 如果想看最终eslint config生成，可以debug查看，对应的文件为：
 
 node_modules/eslint/lib/linter/linter.js 方法 verify
+
+## Vue3 Jsx 支持
+
+```shell
+npm i @vitejs/plugin-vue-jsx -D
+```
+
+注册插件，vite.config.js
+
+```shell
+import vueJsx from '@vitejs/plugin-vue-jsx'
+
+export default {
+  plugins: [vue(), vueJsx()],
+}
+```
+
+## element plus 组件
+
+
 
 ## axios
 

@@ -8,25 +8,26 @@
     "eslint": "eslint src --ext .vue --ext .ts"
   },
   "dependencies": {
-    "vue": "^3.2.12",
+    "vue": "^3.2.19",
     "vue-router": "^4.0.11",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@types/node": "^16.9.3",
-    "@typescript-eslint/eslint-plugin": "^4.31.2",
-    "@typescript-eslint/parser": "^4.31.2",
-    "@vitejs/plugin-vue": "^1.8.0",
-    "@vue/compiler-sfc": "^3.2.12",
+    "@types/node": "^16.10.2",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "@vitejs/plugin-vue": "^1.9.2",
+    "@vitejs/plugin-vue-jsx": "^1.2.0",
+    "@vue/compiler-sfc": "^3.2.19",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-vue": "^7.18.0",
-    "sass": "^1.41.1",
+    "sass": "^1.42.1",
     "typescript": "^4.3.2",
-    "vite": "^2.5.10",
+    "vite": "^2.6.2",
     "vue-eslint-parser": "^7.11.0",
     "vue-tsc": "^0.3.0"
   }
