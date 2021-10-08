@@ -3,13 +3,13 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    node: true
+    node: true,
   },
-  plugins: ['@typescript-eslint', 'vue'],
+  plugins: ['@typescript-eslint', 'import', 'vue'],
   extends: [
-    'standard',
     'plugin:vue/vue3-essential',
-    'plugin:@typescript-eslint/eslint-recommended'
+    'eslint-config-airbnb-base',
+    'plugin:@typescript-eslint/eslint-recommended',
   ],
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -17,37 +17,58 @@ module.exports = {
     ecmaVersion: 2020,
     extraFileExtensions: ['.vue'],
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
+      generators: false,
+      objectLiteralDuplicateProperties: false,
     },
-    sourceType: 'module'
+    sourceType: 'module',
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: [
+          'state', // for vuex state
+          'acc', // for reduce accumulators
+          'e', // for e.returnvalue
+        ],
+      },
+    ],
+    'no-plusplus': 'off',
+    // vue eslint rules
+    // https://eslint.vuejs.org/rules/script-indent.html
+    'vue/script-indent': ['error', 2, { baseIndent: 1 }],
+    // import eslint rules
+    'import/no-extraneous-dependencies': 'off',
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
   },
   overrides: [
     {
       files: ['*.vue'],
       rules: {
-        indent: 'off'
-      }
-    },
-    {
-      files: ['*.ts', '*.tsx'],
-      rules: {
-        // The core 'no-unused-vars' rules (in the eslint:recommeded ruleset)
-        // does not work with type definitions
-        'no-unused-vars': 'off'
-      }
+        indent: 'off',
+      },
     },
     {
       files: [
         '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)'
+        '**/tests/unit/**/*.spec.{j,t}s?(x)',
       ],
       env: {
-        mocha: true
-      }
-    }
-  ]
-}
+        mocha: true,
+      },
+    },
+  ],
+  settings: {
+    'import/resolver': {
+      // https://github.com/benmosher/eslint-plugin-import/issues/1396
+      [require.resolve('eslint-import-resolver-node')]: {},
+    },
+  },
+  globals: {
+    defineProps: 'readonly',
+  },
+};

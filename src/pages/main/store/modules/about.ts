@@ -3,33 +3,31 @@ const about = {
   namespaced: true,
 
   // 模块内容（module assets）
-  state: () => {
-    return {
-      count: 0,
-      todos: [
-        { id: 1, text: '...', done: true },
-        { id: 2, text: '...', done: false }
-      ]
-    }
-  },
+  state: () => ({
+    count: 0,
+    todos: [
+      { id: 1, text: '...', done: true },
+      { id: 2, text: '...', done: false },
+    ],
+  }),
 
   getters: {
-    isAdmin () {
-      return true
-    }
+    isAdmin() {
+      return true;
+    },
   },
 
   actions: {
-    increment ({ commit }: any) {
-      commit('increment')
-    }
+    increment({ commit }: any) {
+      commit('increment');
+    },
   },
 
   mutations: {
-    increment (state: any) {
-      state.count++
-    }
-  }
-}
+    increment(state: any) {
+      state.count++;
+    },
+  },
+};
 
-export default about
+export default about;

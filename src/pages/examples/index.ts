@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
-import App from './index.vue'
-import router from './router'
+import { createApp } from 'vue';
+import App from './index.vue';
+import router from './router';
 
 /**
  * 改为插件 unplugin-vue-components 自动导入
@@ -10,10 +10,10 @@ import router from './router'
   app.use(ElementPlus)
  */
 
-import './styles/index.scss'
+import './styles/index.scss';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(router)
+app.use(router);
 
-app.mount('#app')
+app.mount('#app');

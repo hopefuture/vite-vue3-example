@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import '@/components/layouts/BaseHeader.vue'
+  import '@/components/layouts/BaseHeader.vue';
 </script>
 
 <template>
@@ -10,6 +10,7 @@
     <!--`<router-link>` 将呈现一个带有正确 `href` 属性的 `<a>` 标签-->
     <router-link to="/">首页</router-link>
     <router-link to="/element">Element Plus</router-link>
+    <router-link to="/vue-official">Vue 官方示例</router-link>
     <router-link to="/about">Go to About</router-link>
   </div>
   <!-- 路由出口 -->

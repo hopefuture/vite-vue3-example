@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref } from 'vue';
 
-  defineProps<{ msg: string }>()
+  defineProps<{ msg: string }>();
 
-  const count = ref(0)
-  const input = ref('element-plus')
+  const count = ref(0);
+  const input = ref('element-plus');
 </script>
 
 <template>
