@@ -163,13 +163,13 @@ npm install --save-dev sass
 需要安装以下依赖
 
 ```shell
-npm install --save-dev eslint eslint-plugin-vue vue-eslint-parser @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-standard
+npm install --save-dev eslint eslint-plugin-vue vue-eslint-parser @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb-base
 ```
 
-由于 eslint-config-standard 依赖 eslint-plugin-import eslint-plugin-node 和 eslint-plugin-promise，所以还需安装这三个包
+由于 eslint-config-airbnb-base 依赖 eslint-plugin-import 和 eslint-import-resolver-node，所以还需安装这两个包
 
 ```shell
-npm install --save-dev eslint-plugin-import eslint-plugin-node eslint-plugin-promise
+npm install --save-dev eslint-plugin-import eslint-import-resolver-node
 ```
 
 .eslintrc.js
@@ -178,15 +178,15 @@ npm install --save-dev eslint-plugin-import eslint-plugin-node eslint-plugin-pro
 
   ```js
   {
-    "extends": ["plugin:vue/vue3-essential"]
+    extends: ['plugin:vue/vue3-essential']
   }
   ```
 
-* eslint-config-standard 设置
+* eslint-config-airbnb-base 设置
 
   ```js
   {
-    "extends": ["standard"]
+    extends: ['eslint-config-airbnb-base']
   }
   ```
 
@@ -194,14 +194,16 @@ npm install --save-dev eslint-plugin-import eslint-plugin-node eslint-plugin-pro
 
   ```js
   {
-    "extends": ["plugin:@typescript-eslint/eslint-recommended"]
+    extends: ['plugin:@typescript-eslint/eslint-recommended']
   },
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
     extraFileExtensions: ['.vue'],
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
+      generators: false,
+      objectLiteralDuplicateProperties: false,
     },
     sourceType: 'module'
   },
@@ -209,7 +211,23 @@ npm install --save-dev eslint-plugin-import eslint-plugin-node eslint-plugin-pro
 
 如果想看最终eslint config生成，可以debug查看，对应的文件为：
 
-node_modules/eslint/lib/linter/linter.js 方法 verify
+node_modules/eslint/lib/linter/linter.js 方法 verify，然后再进入 _verifyWithConfigArray
+
+关于 eslint 命令行一点小常识
+
+* 同时检测多个后缀
+
+  ```shell
+    eslint src --fix --ext .vue --ext .ts -ext .js
+    # 或者
+    eslint src --fix --ext .vue,.ts,.js
+  ```
+
+* 同时检测多个文件夹
+
+  ```shell
+    eslint src server --fix --ext .vue,.ts,.js
+  ```
 
 ## Vue3 Jsx 支持
 
@@ -278,10 +296,44 @@ export default {
 }
 ```
 
+## node 服务端
+
+### koa
+
+为了摄取更多优秀开源组件，我们使用koa，需要安装以下依赖
+
+```shell
+npm install --save koa @koa/router
+```
+
+### 日志 winston
+
+```shell
+npm install --save winston
+```
+
+增加中间件，/server/middlewares/logger/index.js
+
+参考：https://github.com/yidinghan/koa2-winston
+
+### 后台请求接口 got
+
+```shell
+npm install --save got
+```
+
+### node 服务守卫助手 nodemon
+
+```shell
+npm install --save-dev nodemon
+```
+
 ## axios
 
 ## mock
 
 ## 单元测试
 
-## ssr
+```shell
+npm install --save-dev mocha chai @types/mocha @types/chai
+```

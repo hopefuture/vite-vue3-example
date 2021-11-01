@@ -28,15 +28,12 @@ module.exports = {
     'no-param-reassign': [
       'error',
       {
-        props: true,
-        ignorePropertyModificationsFor: [
-          'state', // for vuex state
-          'acc', // for reduce accumulators
-          'e', // for e.returnvalue
-        ],
+        props: false,
       },
     ],
     'no-plusplus': 'off',
+    'func-names': 'off',
+    'max-len': 'off',
     // vue eslint rules
     // https://eslint.vuejs.org/rules/script-indent.html
     'vue/script-indent': ['error', 2, { baseIndent: 1 }],
@@ -56,6 +53,7 @@ module.exports = {
       files: [
         '**/__tests__/*.{j,t}s?(x)',
         '**/tests/unit/**/*.spec.{j,t}s?(x)',
+        '**/tests/server/**/*.spec.{j,t}s?(x)',
       ],
       env: {
         mocha: true,
