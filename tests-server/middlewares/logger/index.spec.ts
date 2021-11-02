@@ -1,27 +1,29 @@
-const Koa = require('koa');
-const supertest = require('supertest');
-const Transport = require('winston-transport');
-const { expect } = require('chai');
-const {
+import Koa from 'koa';
+import supertest from 'supertest';
+import Transport from 'winston-transport';
+import { expect } from 'chai';
+import {
   error, warn, info, debug, requestLogger,
-} = require('../../../../server/middlewares/logger/index');
+} from '../../../server/middlewares/logger/index';
 
 // 自定义 winston transport
 class CustomTransport extends Transport {
-  constructor(msgs = []) {
+  msgs: any[];
+
+  constructor(msgs: any[] = []) {
     super();
     this.msgs = msgs;
   }
 
-  log(msgs, callback) {
+  log(msgs: any, callback: any) {
     this.msgs.push(msgs);
     callback(null, true);
   }
 }
 
-const useLogger = (handler = (ctx) => {
+const useLogger = (handler: any = (ctx: any) => {
   ctx.body = 'logger';
-}, transports) => {
+}, transports?: any) => {
   const app = new Koa();
   app.use(requestLogger(transports));
   app.use(handler);
@@ -49,8 +51,8 @@ describe('koa winston 日志输出测试', () => {
 
 describe('koa winston request请求日志测试', () => {
   it('1、log level should be warn when status=400', async () => {
-    const msgs = [];
-    const warnHandler = (ctx) => {
+    const msgs: any = [];
+    const warnHandler = (ctx: any) => {
       ctx.status = 400;
     };
     const app = useLogger(
@@ -67,8 +69,8 @@ describe('koa winston request请求日志测试', () => {
   });
 
   it('2、正常返回数据', async () => {
-    const msgs = [];
-    const requestHandler = (ctx) => {
+    const msgs: any = [];
+    const requestHandler = (ctx: any) => {
       ctx.status = 200;
       ctx.body = {
         code: '0000',
@@ -93,8 +95,8 @@ describe('koa winston request请求日志测试', () => {
   });
 
   it('3、打印日志信息', async () => {
-    const msgs = [];
-    const requestHandler = (ctx) => {
+    const msgs: any = [];
+    const requestHandler = (ctx: any) => {
       ctx.status = 200;
       ctx.body = {
         code: '0000',
@@ -119,9 +121,9 @@ describe('koa winston request请求日志测试', () => {
   });
 
   it('4、cookies 信息', async () => {
-    const msgs = [];
+    const msgs: any = [];
     let cookie = '';
-    const requestHandler = (ctx) => {
+    const requestHandler = (ctx: any) => {
       const {
         header: { cookie: requestCookie },
       } = ctx;
@@ -154,8 +156,8 @@ describe('koa winston request请求日志测试', () => {
   });
 
   it('6、请求抛出异常时', async () => {
-    const msgs = [];
-    const requestHandler = (ctx) => {
+    const msgs: any = [];
+    const requestHandler = (ctx: any) => {
       ctx.throw('test');
     };
     const app = useLogger(

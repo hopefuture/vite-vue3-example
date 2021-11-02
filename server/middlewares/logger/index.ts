@@ -1,6 +1,6 @@
-const { createLogger, format, transports } = require('winston');
+import { createLogger, format, transports } from 'winston';
 
-const { getCallerFile, printfFormat, requestPrintfFormat } = require('./parse');
+import { getCallerFile, printfFormat, requestPrintfFormat } from './parse';
 
 const {
   combine, colorize, timestamp,
@@ -40,7 +40,7 @@ const winstonLogger = createLogger(options);
    }
   * @param {*} payload 包含以下属性
  */
-const logger = function (level, message, payload = {}, errSource) {
+const logger = function (level: string, message: string, payload: any = {}, errSource?: any) {
   const {
     logInfo = {},
     isReq,
@@ -81,19 +81,19 @@ const logger = function (level, message, payload = {}, errSource) {
 };
 
 // error: 0, warn: 1, info: 2, debug: 3
-module.exports.error = (message) => {
+export const error = (message: string) => {
   logger('error', message);
 };
 
-module.exports.warn = (message) => {
+export const warn = (message: string) => {
   logger('warn', message);
 };
 
-module.exports.info = (message) => {
+export const info = (message: string) => {
   logger('info', message);
 };
 
-module.exports.debug = (message) => {
+export const debug = (message: string) => {
   logger('debug', message);
 };
 
@@ -102,17 +102,17 @@ module.exports.debug = (message) => {
  * @param {*} payload winston 配置项
  * @returns
  */
-module.exports.requestLogger = (customTransports) => {
+export const requestLogger = (customTransports?: any) => {
   const errSource = getCallerFile();
-  return async (ctx, next) => {
+  return async (ctx: any, next: any) => {
     const { request, response } = ctx;
-    const logInfo = { req: request, startTime: process.hrtime.bigint() };
+    const logInfo: any = { req: request, startTime: process.hrtime.bigint() };
 
-    let error;
+    let reqErr;
     try {
       await next();
     } catch (e) {
-      error = e;
+      reqErr = e;
     } finally {
       setImmediate(() => {
         let level = 'info';
@@ -128,8 +128,8 @@ module.exports.requestLogger = (customTransports) => {
       });
     }
 
-    if (error) {
-      throw error;
+    if (reqErr) {
+      throw reqErr;
     }
   };
 };

@@ -337,3 +337,32 @@ npm install --save-dev nodemon
 ```shell
 npm install --save-dev mocha chai @types/mocha @types/chai
 ```
+
+## typescript cli
+
+## 动态修改 typescript 对应配置文件
+
+默认为 tsconfig.json，可以通过命令来修改
+
+```shell
+// 通过 cli 参数 p 来修改
+tsc -p ./server-tsconfig.json -w
+```
+
+对应的环境变量为 TS_NODE_PROJECT
+
+例如 mocha 测试ts文件时，需要修改默认的 tsconfig.json 时就可以使用环境变量
+
+```shell
+TS_NODE_PROJECT='./server-tsconfig.json' mocha
+```
+
+还可以直接使用 TS_NODE_COMPILER_OPTIONS 来配置 ts config
+
+```shell
+"test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'"
+```
+
+参考：
+* https://www.npmjs.com/package/ts-node#tsconfig
+* https://dev.to/matteobruni/mocha-chai-with-typescript-37f

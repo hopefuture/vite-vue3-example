@@ -1,7 +1,7 @@
-const { warn } = require('./logger');
+import { warn } from '../middlewares/logger';
 
 // 格式化 json 数据
-module.exports.parseJSON = (str) => {
+export const parseJSON = (str: string) => {
   if (!str) {
     return {};
   }
@@ -14,7 +14,7 @@ module.exports.parseJSON = (str) => {
 };
 
 // 把 json 数据转换为字符串
-module.exports.stringifyJSON = (json, space) => {
+export const stringifyJSON = (json: any, space: any) => {
   try {
     return JSON.stringify(json, null, space);
   } catch (e) {
@@ -24,7 +24,7 @@ module.exports.stringifyJSON = (json, space) => {
 };
 
 // 首字母大写
-module.exports.upperFirstLetter = (str) => {
+export const upperFirstLetter = (str: string) => {
   if (!str) {
     return '';
   }

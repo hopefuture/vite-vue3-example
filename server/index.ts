@@ -1,7 +1,7 @@
-const Koa = require('koa');
-const {
+import Koa from 'koa';
+import {
   requestLogger,
-} = require('./middlewares/logger/index');
+} from './middlewares/logger/index';
 
 const app = new Koa();
 

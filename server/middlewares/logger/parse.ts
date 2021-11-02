@@ -1,5 +1,5 @@
-const localIp = require('ip');
-const { format } = require('winston');
+import localIp from 'ip';
+import { format } from 'winston';
 
 const { printf } = format;
 
@@ -10,7 +10,7 @@ const { printf } = format;
  * @param depth 堆栈深度，默认3
  * @returns {string}如：
  */
-function getPositionFromStack(stack, appName, depth = 3) {
+export function getPositionFromStack(stack: string, appName: string, depth = 3) {
   /**
    * 第一个换行符为 Error 后面的换行符
    * 第二个换行符为当前文件: at module.exports.getCallerFile (xxxx/server/utils/koa-winston/parse.js:74:17)\n
@@ -70,23 +70,21 @@ function getPositionFromStack(stack, appName, depth = 3) {
   return subStack;
 }
 
-module.exports.getPositionFromStack = getPositionFromStack;
-
 /**
  * 通过错误堆栈信息获取调用文件路径和行号
  * @param depth 堆栈深度，默认3
  * @returns {string} 如：tests.server.utils.koa_winston.index.spec.js
  */
-module.exports.getCallerFile = function (depth = 3) {
+export function getCallerFile(depth = 3) {
   // 需要根据实际部署的文件名，做动态调整，也可以根据不同的环境设置成不同的文件名称
   const appName = process.env.appName || 'vite-vue3-example';
   // 替换双斜杠的情况，主要针对windows系统
   const stack = new Error().stack.replace(/\\/g, '/');
   return getPositionFromStack(stack, appName, depth);
-};
+}
 
 // 自定义打印格式
-module.exports.printfFormat = printf((info) => {
+export const printfFormat = printf((info) => {
   const {
     level, message, location, timestamp,
   } = info;
@@ -95,7 +93,7 @@ module.exports.printfFormat = printf((info) => {
 });
 
 // request 请求打印日志格式
-module.exports.requestPrintfFormat = printf((info) => {
+export const requestPrintfFormat = printf((info) => {
   const {
     level, message, location, timestamp, duration, req, res,
   } = info;

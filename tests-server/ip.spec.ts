@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const ip = require('ip');
+import { expect } from 'chai';
+import ip from 'ip';
 
 describe('node 依赖 ip (https://www.npmjs.com/package/ip) 测试', () => {
   it('ip.address()，返回当前服务器ip地址', () => {
