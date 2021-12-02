@@ -7,7 +7,7 @@ export const parseJSON = (str: string) => {
   }
   try {
     return JSON.parse(str);
-  } catch (e) {
+  } catch (e: any) {
     warn(`JSON 格式不正确：${e.message}`);
     return {};
   }
@@ -17,16 +17,8 @@ export const parseJSON = (str: string) => {
 export const stringifyJSON = (json: any, space: any) => {
   try {
     return JSON.stringify(json, null, space);
-  } catch (e) {
+  } catch (e: any) {
     warn(`JSON 格式不正确：${e.message}`);
     return '';
   }
-};
-
-// 首字母大写
-export const upperFirstLetter = (str: string) => {
-  if (!str) {
-    return '';
-  }
-  return str[0].toUpperCase() + str.substring(1);
 };

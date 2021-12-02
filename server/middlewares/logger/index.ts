@@ -40,12 +40,12 @@ const winstonLogger = createLogger(options);
    }
   * @param {*} payload 包含以下属性
  */
-const logger = function (level: string, message: string, payload: any = {}, errSource?: any) {
+const logger = function (level: string, message: string, payload?: any, errSource?: any) {
   const {
     logInfo = {},
     isReq,
     customTransports,
-  } = payload;
+  } = payload || {};
 
   // 设置出错文件位置
   logInfo.location = errSource || getCallerFile();
