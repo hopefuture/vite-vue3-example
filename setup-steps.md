@@ -10,7 +10,7 @@
 npm init vite@latest vite-vue3-example -- --template vue-ts
 ```
 
-## 修改配置文件，https://cn.vitejs.dev/config/
+## 修改配置文件，<https://cn.vitejs.dev/config/>
 
 ### 设置别名
 
@@ -40,7 +40,7 @@ npm init vite@latest vite-vue3-example -- --template vue-ts
 
 ## 多页面应用模式
 
-官方地址：https://cn.vitejs.dev/guide/build.html#multi-page-app
+官方地址：<https://cn.vitejs.dev/guide/build.html#multi-page-app>
 
 默认在根目录下会创建一个 index.html 作为入口文件，如果我们有多个入口文件时，可以在根目录下创建多个，比如 examples/index.html、platform/index.html 等，同时在 src 增加 pages 文件夹，用来管理多页面入口
 
@@ -211,7 +211,7 @@ npm install --save-dev eslint-plugin-import eslint-import-resolver-node
 
 如果想看最终eslint config生成，可以debug查看，对应的文件为：
 
-node_modules/eslint/lib/linter/linter.js 方法 verify，然后再进入 _verifyWithConfigArray
+node_modules/eslint/lib/linter/linter.js 方法 verify，然后再进入_verifyWithConfigArray
 
 关于 eslint 命令行一点小常识
 
@@ -306,6 +306,12 @@ export default {
 npm install --save koa @koa/router
 ```
 
+#### koa 中间件
+
+参考：
+
+* https://koajs.com/
+
 ### 日志 winston
 
 ```shell
@@ -314,7 +320,9 @@ npm install --save winston
 
 增加中间件，/server/middlewares/logger/index.js
 
-参考：https://github.com/yidinghan/koa2-winston
+参考：
+
+* <https://github.com/yidinghan/koa2-winston>
 
 ### 后台请求接口 got
 
@@ -327,6 +335,17 @@ npm install --save got
 ```shell
 npm install --save-dev nodemon
 ```
+
+### node 服务端支持 Typescript
+
+使用 tsc 实时编译
+
+参考：
+
+* <https://github.com/Microsoft/TypeScript-Node-Starter>
+
+## ssr 支持
+
 
 ## axios
 
@@ -364,5 +383,6 @@ TS_NODE_PROJECT='./server-tsconfig.json' mocha
 ```
 
 参考：
-* https://www.npmjs.com/package/ts-node#tsconfig
-* https://dev.to/matteobruni/mocha-chai-with-typescript-37f
+
+* <https://www.npmjs.com/package/ts-node#tsconfig>
+* <https://dev.to/matteobruni/mocha-chai-with-typescript-37f>

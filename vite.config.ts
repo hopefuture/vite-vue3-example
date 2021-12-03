@@ -5,7 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
-// https://vitejs.dev/config/
+// https://cn.vitejs.dev/
 export default defineConfig({
   publicDir: 'public', // 作为静态资源服务的文件夹，默认值为 public
   // 设置别名
@@ -23,7 +23,7 @@ export default defineConfig({
   },
   server: {
     host: '127.0.0.1',
-    port: 8090,
+    port: 9090,
     strictPort: true, // 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。
   },
   build: {

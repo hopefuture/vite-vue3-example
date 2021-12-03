@@ -1,11 +1,57 @@
-# Vue 3 + Typescript + Vite
+# Vue 3 + Typescript + Vite 示例
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+基于官方模板搭建 Vue 3 + Typescript + Vite 示例
 
-## Recommended IDE Setup
+## 前端技能
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+* Vue3
+* Typescript
+* Vite
+* Vite 多页面设置
+* vue-router
+* vuex
+* sass
+* eslint eslint-config-airbnb-base
+* Vue3 Jsx 支持
+* element-plus
+* koa
+* got
+* 日志 winston
+* axios
+* 单元测试 mocha chai
 
-## Type Support For `.vue` Imports in TS
+## build and server
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+### 本地启动
+
+```shell
+npm run watch
+```
+
+使用 concurrently 启动多个 npm 命令，主要包括
+
+* ```npm run watch-build-server```，实时编译服务端代码
+* ```npm run watch-server```，实时启动服务端
+* ```npm run dev```，实时启动Vue服务
+
+如果为了调试，也可以开三个命令窗口，分别启动
+
+### 构建
+
+```shell
+npm run build
+```
+
+## 单元测试
+
+### node 服务端
+
+```shell
+npm run test-server
+```
+
+### vue 前端单元测试
+
+```shell
+npm run test
+```
